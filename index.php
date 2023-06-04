@@ -27,10 +27,12 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 echo '</HEAD>';
 echo '<BODY>';
 
+echo '<img style="width: 100px;" src="https://3.bp.blogspot.com/-la0WXIEj3Og/VA7mbmBn1UI/AAAAAAAAmQY/FlJynwAD9ro/s450/yuusya_game.png">' . '<br>' . "\n";
 echo 'ゆうしゃ' . '<br>' . "\n";
 echo 'LV:'. $player_lv . '<br>' . "\n";
 echo 'HP:'. $player_hp . '<br>' . "\n";
 echo '<br>' . "\n";
+echo '<img style="width: 100px;" src="https://www.publicdomainpictures.net/pictures/420000/velka/image-1634028241i3M.png">' . '<br>' . "\n";
 echo $msg . "\n";
 
 echo '<br>' . "\n";
