@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST["battle"])) {
     // モンスターと自分のHPを減らす
     $damage_mine = mt_rand(0, 5);
@@ -27,19 +26,26 @@ if (isset($_POST["battle"])) {
 echo '<HTML>';
 echo '<HEAD>';
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+echo '<link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css" />';
 echo '</HEAD>';
 echo '<BODY>';
+echo '<style>.shake.shake-constant{animation-iteration-count: 7;}</style>' . '<br>' . "\n";
 
-echo '<img style="width: 100px;" src="https://3.bp.blogspot.com/-la0WXIEj3Og/VA7mbmBn1UI/AAAAAAAAmQY/FlJynwAD9ro/s450/yuusya_game.png">' . '<br>' . "\n";
-echo 'ゆうしゃ' . '<br>' . "\n";
+if ($damage_mine > 0){
+    echo '<img class="shake shake-constant" style="width: 100px;" src="https://3.bp.blogspot.com/-la0WXIEj3Og/VA7mbmBn1UI/AAAAAAAAmQY/FlJynwAD9ro/s450/yuusya_game.png">' . '<br>' . "\n";
+}else{
+    echo '<img style="width: 100px;" src="https://3.bp.blogspot.com/-la0WXIEj3Og/VA7mbmBn1UI/AAAAAAAAmQY/FlJynwAD9ro/s450/yuusya_game.png">' . '<br>' . "\n";
+}
+echo '<span>ゆうしゃ</span>' . '<br>' . "\n";
 echo 'LV:'. $player_lv . '<br>' . "\n";
 echo 'HP:'. $player_hp . '<br>' . "\n";
 echo '<br>' . "\n";
-echo '<img style="width: 100px;" src="https://www.publicdomainpictures.net/pictures/420000/velka/image-1634028241i3M.png">' . '<br>' . "\n";
+if ($damage_monster > 0){
+    echo '<img class="shake shake-constant" style="width: 100px;" src="https://www.publicdomainpictures.net/pictures/420000/velka/image-1634028241i3M.png">' . '<br>' . "\n";
+}else{
+    echo '<img style="width: 100px;" src="https://www.publicdomainpictures.net/pictures/420000/velka/image-1634028241i3M.png">' . '<br>' . "\n";
+}
 echo $msg . "\n";
-
-echo '<br>' . "\n";
-echo '<br>' . "\n";
 
 // フォームボタン
 echo '<form method="post">'. "\n";
@@ -60,6 +66,8 @@ if ($monster_hp <= 0) {
 }
 // 自分のHPが0以下になった場合
 if ($player_hp <= 0) {
+    // 戦闘終了フラグをたてる
+    $isLose = True;
     echo "ゆうしゃは力尽きた…";
     echo '<form method="post">'. "\n";
     echo '<input type="submit" name="reset" value="復活の呪文">';
